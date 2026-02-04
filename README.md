@@ -24,7 +24,15 @@ A collection of Python scripts designed to automate core administrative tasks: f
 * **Solution:** A Python automation script that interfaces with the VirtualBox Hypervisor (`VBoxManage`). It sequentially boots the machines with a safety delay to prevent host CPU spikes.
 * **Tech Used:** `subprocess` module, Hypervisor CLI automation.
 
+### 5. Automated Traffic Generator (`traffic_generator.py`)
+* **Problem:** Home labs are often silent, making it hard to test SIEM alerts or practice threat hunting without manually launching attacks.
+* **Solution:** A "Purple Team" script that runs on a Kali Linux node. It randomizes network probes (Nmap scans, ICMP pings, and simulated Brute Force attempts) against a target VM at irregular intervals to generate realistic noise in Splunk/Sysmon logs.
+* **Tech Used:** Python `subprocess`, `random`, and standard Linux security tools (`nmap`, `hydra`).
+* **Note:** For educational/lab use only.
+
 ## How to Run
 1. **Organizer:** Update `source_dir` in the script and run `python file_organizer.py`
 2. **Monitor:** Run `python disk_monitor.py` (Exit code 1 indicates low space).
 3. **Analyzer:** Ensure a log file exists and run `python log_analyzer.py`
+4. **Launcher:** Update the `VMS_TO_START` list inside the script with your specific VM names, then run `python lab_launcher.py`
+5. **Generator:** Update `VICTIM_IP` to your target's address and run `python traffic_generator.py` (Press CTRL+C to stop the simulation).
