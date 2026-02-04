@@ -19,6 +19,11 @@ A collection of Python scripts designed to automate core administrative tasks: f
 * **Solution:** scans text-based log files for specific threat indicators (keywords like "Failed", "Unauthorized") and extracts the exact line number for review.
 * **Tech Used:** String parsing, File I/O.
 
+* ### 4. Lab Environment Launcher (`lab_launcher.py`)
+* **Problem:** Setting up the home lab requires manually launching 3 separate Virtual Machines (Splunk, Windows, Kali), which is tedious.
+* **Solution:** A Python automation script that interfaces with the VirtualBox Hypervisor (`VBoxManage`). It sequentially boots the machines with a safety delay to prevent host CPU spikes.
+* **Tech Used:** `subprocess` module, Hypervisor CLI automation.
+
 ## How to Run
 1. **Organizer:** Update `source_dir` in the script and run `python file_organizer.py`
 2. **Monitor:** Run `python disk_monitor.py` (Exit code 1 indicates low space).
