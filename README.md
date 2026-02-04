@@ -30,9 +30,16 @@ A collection of Python scripts designed to automate core administrative tasks: f
 * **Tech Used:** Python `subprocess`, `random`, and standard Linux security tools (`nmap`, `hydra`).
 * **Note:** For educational/lab use only.
 
+### 6. Ransomware Simulator (`ransom_simulator.py`)
+* **Problem:** Detecting ransomware behavior (mass file modification) requires realistic test data, but running real malware is too dangerous.
+* **Solution:** A safe simulation script that creates a sandbox directory (`./simulation_data`), populates it with dummy files, and performs a "reversible encryption" (text reversal) and file renaming action.
+* **Goal:** Triggers "File Creation", "File Deletion", and "Extension Change" events in Sysmon/Splunk for rule testing.
+* **Safety:** Strictly limited to its own sub-folder; does not touch system files.
+
 ## How to Run
 1. **Organizer:** Update `source_dir` in the script and run `python file_organizer.py`
 2. **Monitor:** Run `python disk_monitor.py` (Exit code 1 indicates low space).
 3. **Analyzer:** Ensure a log file exists and run `python log_analyzer.py`
 4. **Launcher:** Update the `VMS_TO_START` list inside the script with your specific VM names, then run `python lab_launcher.py`
 5. **Generator:** Update `VICTIM_IP` to your target's address and run `python traffic_generator.py` (Press CTRL+C to stop the simulation).
+6. **Ransom Sim:** Run `python ransom_simulator.py` (It will create a folder, encrypt the dummy files inside, and drop a note).
